@@ -1,0 +1,43 @@
+.features{
+    grid-column: center-start / center-end ;
+    
+    margin: 15rem 0;
+
+    @supports(display: grid) {
+        display: grid;
+        // grid-template-columns: repeat(3,1fr);
+        grid-template-columns: repeat(auto-fit,minmax(25rem,1fr));  //! so here each column can have up to 25rem but when we start dicreasing at the point when no longer can fit 3 columns then it reduces itself in 2 columns and 1 columns depands the number of columns can fit
+        grid-gap: 6rem;
+        align-items: start;   
+    }
+}
+
+.feature{
+    float: left;
+    width: 33.3333%;
+    margin-bottom: 6rem;
+    
+    @supports(display: grid) {
+        width: auto;
+        margin-bottom: 0;
+    }
+    
+    display: grid;
+    grid-template-columns: min-content 1fr; // in this case min-content = 4.5rem = icon's width
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 2.5rem;
+
+    &__text{
+        font-size: 1.7rem;
+    }
+
+    &__icon{
+        height: 4.5rem;
+        width: 4.5rem;
+        fill: $color-primary;
+        transform: translateY(-1rem);
+
+        grid-row: 1 / span 2;   //  grid-row: 1 / -1 also correct but in this case we didn't define the row so is correct just for the explicit grid but here we have the 2nd row in the implicit grid that's why we didn't get the right alignement with -1 value so he spans just in the explicit grid wich means the 1st row
+
+    }
+}
