@@ -1,0 +1,84 @@
+.header {
+    grid-column: full-start / col-end 6;
+
+    background-image: linear-gradient(rgba($color-secondary, .93), rgba($color-secondary, .93)), url(../img/hero.jpeg);
+    background-size: cover;
+    background-position: center;
+    padding: 8rem;
+    padding-top: 4rem;
+    padding-bottom: 6rem;
+
+    display: grid;
+    grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
+    grid-template-columns: minmax(min-content, max-content);
+    grid-row-gap: 1.5rem;
+    justify-content: center;
+
+    @media only screen and (max-width: $bp-medium) {
+        grid-column: 1 / -1;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        padding: 5rem;
+    }
+
+    &__logo {
+        height: 3rem;
+        justify-self: center;
+    }
+
+    &__btn {
+        align-self: start;
+        justify-self: start;
+
+        border-radius: 2px;
+    }
+
+    &__seenon-text {
+        display: grid;
+        grid-template-columns: 1fr max-content 1fr;  //! max-content takes the max and full width of the element wich contains without making any break-lines but min-content takes the minimum width of the element with break-lines untill it gets the minimum width
+        grid-column-gap: 1.5rem;
+        align-items: center;
+
+        font-size: 1.6rem;
+        color: $color-grey-light-2;
+
+        &::before,
+        &::after {
+            content: "";
+            height: 1px;
+            display: block;
+            background-color: currentColor;
+        }
+    }
+
+    &__seenon-logos {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: 3rem;
+        justify-items: center;
+        align-items: center;
+
+        margin-top: 1rem;
+
+        img {
+            max-height: 2.3rem;
+            max-width: 100%;
+            filter: brightness(70%);
+            animation: pulsatee 1s infinite;
+            transition: all .8s ease-out;
+        }
+    }
+}
+
+@keyframes pulsatee{
+    0%{
+        filter: brightness(60%);
+    }
+    50%{
+        filter: brightness(90%);
+    }
+    100%{
+        filter: brightness(60%);
+    }
+}
